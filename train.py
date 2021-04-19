@@ -41,10 +41,13 @@ if opt.cuda and not torch.cuda.is_available():
     raise Exception("No GPU found, please run without --cuda")
 
 print('===> Loading datasets')
-root_path = '/data/chih0321/'
-train_set = dataset.TrainDataset(os.path.join(root_path, 'GANNeural1/part1'), filenumber=11, sample_number=1000)
-train_unpair_set = dataset.PriorDataset(os.path.join(root_path, 'GANNeural-test'), sample_number=1000)
-test_set = dataset.TestDataset(os.path.join(root_path, 'GANNeural-test'))
+root_path = '/'
+train_set_path = os.path.join(root_path, 'train_set')
+prior_set_path = os.path.join(root_path, 'prior_set')
+test_set_path = os.path.join(root_path, 'test_set')
+train_set = dataset.TrainDataset(train_set_path, filenumber=11, sample_number=1000)
+train_unpair_set = dataset.PriorDataset(prior_set_path, sample_number=1000)
+test_set = dataset.TestDataset(test_set_path)
 training_iterator = DataLoader(dataset=train_set, batch_size=opt.batch_size,  num_workers=opt.threads, shuffle=True)
 train_unpair_iterator = DataLoader(dataset=train_unpair_set, batch_size=opt.batch_size,  num_workers=opt.threads, shuffle=True)
 test_iterator = DataLoader(dataset=test_set, batch_size=opt.batch_size,  num_workers=opt.threads, shuffle=True)
