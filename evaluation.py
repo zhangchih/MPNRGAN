@@ -1,17 +1,5 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
--------------------------------------------------
-   File Name：     calc_trace_performance_BigNeuron_v2.py
-   Description :
-   Author :       'JZhao'
-   date：          2020/2/28
-   Copyright 2020. All Rights Reserved.
--------------------------------------------------
-   Change Activity:
-                   2020/2/28:
--------------------------------------------------
-"""
 import os
 import time
 import cv2
@@ -723,8 +711,8 @@ class TestTracePerformance():
 
 
 if __name__ == '__main__':
-    experiment_path = r'D:\PLNPR_trace_metadata_NGPS_wf'
-    gt_path = r'D:\Projects\NeuronSeg\Write_Paper\Illustrations\trace_result\VISoR-40\GT'
+    experiment_path = r'experiment_path'
+    gt_path = r'gt_path'
 
     experiment_settings = dict()
     experiment_settings['experiment_root_path'] = experiment_path
@@ -735,7 +723,7 @@ if __name__ == '__main__':
     IG = InitGTDict(gt_img_folder)
     gt_images_dict = IG.init_gt_img_dict()
 
-    trace_method_list = ['FMST', 'MOST', 'TreMAP']
+    trace_method_list = ['NGSPT', 'APP2']
     # iteration_list = ['iter1']
     wf_list = [0.1]
     thre_list = [10]
